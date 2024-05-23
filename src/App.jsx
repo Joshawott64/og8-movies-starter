@@ -1,7 +1,21 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import LogoutButton from './components/LogoutButton.jsx';
+import axios from 'axios'
 
 export default function App() {
+
+  const navigate = useNavigate()
+
+  const handleLogOut = async (event) => {
+    event.preventDefault()
+
+    const res = await axios.post('/api/logout')
+
+    if (res.data.success) {
+      navigate('/')
+    }
+  }
+
   return (
     <>
       <nav>
@@ -19,7 +33,7 @@ export default function App() {
             <NavLink to="/me">Your ratings</NavLink>
           </li>
           <li>
-            <LogoutButton />
+            <LogoutButton onLogout={handleLogOut}/>
           </li>
         </ul>
       </nav>
