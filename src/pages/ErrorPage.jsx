@@ -18,7 +18,7 @@ function ErrorPage() {
 
   return (
     <>
-      <h1>Uh oh.</h1>
+      <h1>"Do not be sorry. Be better." -Dad of Boy</h1>
       <p>Sorry, an unexpected error has occurred.</p>
       <p>
         <i>{error.statusText || error.message}</i>
